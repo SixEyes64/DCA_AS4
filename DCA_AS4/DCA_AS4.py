@@ -86,7 +86,17 @@ def query_record_by_date():
 def count_companies_between_dates():
     '''Asks user for start and end date, and then lists companies 
        between those two dates'''
-    pass
+    date_list = []
+    while len(date_list) <= 1:
+        d = int(input("Enter day: "))
+        m = int(input("Enter month: "))
+        y = int(input("Enter year: "))
+
+        # Get date data and format it
+        date = datetime(y, m, d)
+        queryDate = date.strftime('%d/%m/%Y')
+        date_list.append(queryDate)
+        print('\n',date_list)
 
 
 
@@ -97,5 +107,5 @@ def main():
 
 print_all_records()
 # print_positive_growth()
-
-query_record_by_date()
+# query_record_by_date()
+count_companies_between_dates()
