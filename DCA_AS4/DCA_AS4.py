@@ -13,8 +13,6 @@ cursor = conn.cursor()
 
 def print_all_records():
     '''Prints all records'''
-    
-
     cursor.execute('SELECT * FROM Company_Data')
 
     print(HeaderFormat.format('ID','Company Name','Industry','Year Revenue','Revenue Growth','# of Employees','Headquarters','Company Found Date'))
@@ -44,7 +42,14 @@ def print_positive_growth():
 
 def query_record_by_date():
     '''Displays a query sorting records by date'''
-    pass
+    d = int(input("Enter day"))
+    m = int(input("Enter month"))
+    y = int(input("Enter year"))
+    
+    # date = 
+    
+    cursor.execute('SELECT * FROM Company_Data')
+
 
 
 def count_companies_between_dates():
@@ -59,6 +64,6 @@ def main():
     pass
 
 
-# print_all_records()
+print_all_records()
 print_positive_growth()
 
