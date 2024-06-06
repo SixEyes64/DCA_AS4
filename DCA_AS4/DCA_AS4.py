@@ -68,12 +68,17 @@ def query_record_by_date():
 
     # Look through DB
     for row in cursor.fetchall():
+
         rowDate = datetime.strftime(row.company_found_date, '%d/%m/%Y')
+
         if queryDate in rowDate:
-            print('Date found:', rowDate)
-            print('Company Name: {name}\nRevenue: {revenue}'.format(name=row.company_name,revenue=row.year_revenue))
+            date_str = 'Company Name: {name}\nRevenue: {revenue}'.format(name=row.company_name,revenue=row.year_revenue)
+            break
         else:
-            print("No date found")
+            date_str = "No date found"
+
+    # Print result
+    print(date_str)
 
 
 
