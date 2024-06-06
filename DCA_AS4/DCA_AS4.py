@@ -7,14 +7,22 @@ Pledge of Honour: I pledge by honour that this program is solely my work
 Purpose: Program that reads MS Access content and queries data for statistics
 '''
 
+# Path 1: C:\Users\ender\OneDrive\Documents\WITT\4DCA\Assignments\Assessment_4\DCA_AS4\DCA_AS4\company.accdb
+# Path 2: C:\Users\2022001566\source\repos\DCA_AS4\DCA_AS4\company.accdb
+
 HeaderFormat = '{0:<8}{1:<25}{2:<20}{3:<18}{4:<18}{5:20}{6:<20}{7:10}'
-conn = pyodbc.connect(r'Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\2022001566\source\repos\DCA_AS4\DCA_AS4\company.accdb')
+
+# Connect py file to Access using pyodbc
+conn = pyodbc.connect(r'Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\ender\OneDrive\Documents\WITT\4DCA\Assignments\Assessment_4\DCA_AS4\DCA_AS4\company.accdb')
 cursor = conn.cursor()
 
 def print_all_records():
     '''Prints all records'''
+    # Select ALL records
     cursor.execute('SELECT * FROM Company_Data')
 
+    # Format the header with HeaderFormat
+    # and print the underscores to separate heading from data
     print(HeaderFormat.format('ID','Company Name','Industry','Year Revenue','Revenue Growth','# of Employees','Headquarters','Company Found Date'))
     print(f'{"_":_<150}')
 
@@ -27,11 +35,15 @@ def print_all_records():
 
 def print_positive_growth():
     '''Only prints data with positive growth'''
+    # Only selects records with positive growth
     cursor.execute('SELECT * FROM Company_Data WHERE revenue_growth > 0')
     
+    # Format the header with HeaderFormat
+    # and print the underscores to separate heading from data
     print(HeaderFormat.format('ID','Company Name','Industry','Year Revenue','Revenue Growth','# of Employees','Headquarters','Company Found Date'))
     print(f'{"_":_<150}')
     
+    # Print all positive growth records
     for row in cursor.fetchall():
         date = datetime.strftime(row.company_found_date, '%d/%m/%Y')
 
@@ -42,13 +54,27 @@ def print_positive_growth():
 
 def query_record_by_date():
     '''Displays a query sorting records by date'''
-    d = int(input("Enter day"))
-    m = int(input("Enter month"))
-    y = int(input("Enter year"))
-    
-    # date = 
-    
+    # Enter the day, month and year
+    d = int(input("Enter day: "))
+    m = int(input("Enter month: "))
+    y = int(input("Enter year: "))
+
+    # Get date data and format it
+    date = datetime(y, m, d)
+    queryDate = date.strftime('%d/%m/%Y')
+
+    # Use cursor to select from table   
     cursor.execute('SELECT * FROM Company_Data')
+
+    # Look through DB
+    for row in cursor.fetchall():
+        rowDate = datetime.strftime(row.company_found_date, '%d/%m/%Y')
+        if queryDate in rowDate:
+            print('Date found:', rowDate)
+            print('Company Name: {name}\nRevenue: {revenue}'.format(name=row.company_name,revenue=row.year_revenue))
+        else:
+            print("No date found")
+
 
 
 
@@ -65,5 +91,6 @@ def main():
 
 
 print_all_records()
-print_positive_growth()
+# print_positive_growth()
 
+query_record_by_date()
