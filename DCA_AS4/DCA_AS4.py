@@ -86,7 +86,9 @@ def query_record_by_date():
 def count_companies_between_dates():
     '''Asks user for start and end date, and then lists companies 
        between those two dates'''
-    date_list = []
+    date_list = [] # Date list gathers the two dates
+
+    # Enter two dates
     while len(date_list) <= 1:
         d = int(input("Enter day: "))
         m = int(input("Enter month: "))
@@ -95,14 +97,18 @@ def count_companies_between_dates():
         # Get date data and format it
         date = datetime(y, m, d)
         queryDate = date.strftime('%d/%m/%Y')
+
+        # Add to date_list
         date_list.append(queryDate)
         print('\n',date_list)
 
+    # Select BETWEEN dates
     cursor.execute('SELECT * FROM Company_Data WHERE company_found_date BETWEEN ? AND ?',(date_list[0],date_list[1]))
 
     print(HeaderFormat.format('ID','Company Name','Industry','Year Revenue','Revenue Growth','# of Employees','Headquarters','Company Found Date'))
     print(f'{"_":_<150}')
 
+    # Show data between dates
     for row in cursor.fetchall():
         date = datetime.strftime(row.company_found_date, '%d/%m/%Y')
 
