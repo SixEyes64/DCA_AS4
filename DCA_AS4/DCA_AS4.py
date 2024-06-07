@@ -98,6 +98,16 @@ def count_companies_between_dates():
         date_list.append(queryDate)
         print('\n',date_list)
 
+    cursor.execute('SELECT * FROM Company_Data WHERE company_found_date BETWEEN ? AND ?',(date_list[0],date_list[1]))
+
+    print(HeaderFormat.format('ID','Company Name','Industry','Year Revenue','Revenue Growth','# of Employees','Headquarters','Company Found Date'))
+    print(f'{"_":_<150}')
+
+    for row in cursor.fetchall():
+        date = datetime.strftime(row.company_found_date, '%d/%m/%Y')
+
+        record = f'{row.ID:<8}{row.company_name:<25}{row.industry:<25}{row.year_revenue:<15}{row.revenue_growth:<16}{row.number_of_employees:<20}{row.headquarter:<20}{date:<10}'
+        print(record)
 
 
 def main():
