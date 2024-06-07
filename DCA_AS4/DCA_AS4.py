@@ -18,6 +18,9 @@ def main():
     '''Runs all the main functions for the program to function'''
     b = bk()
     b.print_all_records()
+    # b.print_positive_growth()
+    # b.query_record_by_date()
+    # b.count_companies_between_dates()
 
 main()
 # print_all_records()
