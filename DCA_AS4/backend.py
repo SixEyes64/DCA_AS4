@@ -1,6 +1,9 @@
 import pyodbc
 from datetime import datetime
 
+# Path 1: C:\Users\ender\OneDrive\Documents\WITT\4DCA\Assignments\Assessment_4\DCA_AS4\DCA_AS4\company.accdb
+# Path 2: C:\Users\2022001566\source\repos\DCA_AS4\DCA_AS4\company.accdb
+
 class backend():
     def __init__(self):
         self.HeaderFormat = '{0:<8}{1:<25}{2:<20}{3:<18}{4:<18}{5:20}{6:<20}{7:10}'
