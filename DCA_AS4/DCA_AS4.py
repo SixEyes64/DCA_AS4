@@ -21,12 +21,12 @@ class AppFrame(Frame):
     def __init__(self, parent):
         super().__init__(parent)
 
-    def show_frame(self):
+    def show_frame(self):   
         self.pack(pady=20)
 
         # Button Widgets
-        self.print_all = Button(self, text="Print all")
-        self.pos_growth = Button(self, text="Positive Growth")
+        self.print_all = Button(self, text="Print all", command=bk().print_all_records)
+        self.pos_growth = Button(self, text="Positive Growth", command=bk().print_positive_growth)
         self.query_date = Button(self, text="Filter by date")
         self.date_range = Button(self, text="Filter by range")
 
@@ -42,11 +42,8 @@ class AppFrame(Frame):
 
 def main():
     '''Runs all the main functions for the program to function'''
-    b = bk()
     app = App()
     app.mainloop()
-    # b.print_all_records()
-    # b.print_positive_growth()
     # b.query_record_by_date()
     # b.count_companies_between_dates()
 
