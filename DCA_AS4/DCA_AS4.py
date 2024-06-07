@@ -1,5 +1,6 @@
 import pyodbc
 from datetime import datetime
+from backend import backend as bk
 
 '''
 Author: Hunter, 2022001566
@@ -15,9 +16,10 @@ Purpose: Program that reads MS Access content and queries data for statistics
 
 def main():
     '''Runs all the main functions for the program to function'''
-    pass
+    b = bk()
+    b.print_all_records()
 
-
+main()
 # print_all_records()
 # print_positive_growth()
 # query_record_by_date()
