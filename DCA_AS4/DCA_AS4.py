@@ -11,7 +11,7 @@ class App(Tk):
     def __init__(self):
         super().__init__()
 
-        self.title = ("Company Data")
+        self.title("Company Data")
         self.geometry("720x580")
 
         appFrame = AppFrame(self)
@@ -27,7 +27,7 @@ class AppFrame(Frame):
         # Button Widgets
         self.print_all = Button(self, text="Print all", command=bk().print_all_records)
         self.pos_growth = Button(self, text="Positive Growth", command=bk().print_positive_growth)
-        self.query_date = Button(self, text="Filter by date")
+        self.query_date = Button(self, text="Filter by date", command=self.QueryWindow)
         self.date_range = Button(self, text="Filter by range")
 
         # Place buttons
@@ -35,6 +35,13 @@ class AppFrame(Frame):
         self.pos_growth.grid(row=0,column=1, padx=10, pady=10)
         self.query_date.grid(row=1,column=0, padx=10, pady=10)
         self.date_range.grid(row=1,column=1, padx=10, pady=10)
+
+    def QueryWindow(self):
+        # Setup
+        self.query_win = Toplevel(self)
+        self.query_win.title("Enter Date")
+        self.query_win.geometry("300x300")
+
         
 
 # All functions except main moved to backend
