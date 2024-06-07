@@ -17,6 +17,7 @@ class App(Tk):
         appFrame = AppFrame(self)
         appFrame.show_frame()
 
+
 class AppFrame(Frame):
     def __init__(self, parent):
         super().__init__(parent)
@@ -44,7 +45,7 @@ class AppFrame(Frame):
         
         # Labels
         self.dLabel = Label(query_win, text="Date").grid(row=0,column=0,padx=30,pady=15)
-        self.mLabel = Label(query_win, text="Month").grid(row=0,column=1,padx=30,pady=15)
+        self.mLabel = Label(query_win, text="Month").grid(row=0,column=1,padx=40,pady=15)
         self.yLabel = Label(query_win, text="Year").grid(row=0,column=2,padx=30,pady=15)
 
         # Entry Boxes
