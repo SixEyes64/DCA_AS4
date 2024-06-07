@@ -38,13 +38,23 @@ class AppFrame(Frame):
 
     def QueryWindow(self):
         # Setup
-        self.query_win = Toplevel(self)
-        self.query_win.title("Enter Date")
-        self.query_win.geometry("300x300")
-
+        query_win = Toplevel(self)
+        query_win.title("Enter Date")
+        query_win.geometry("300x150")
         
+        # Labels
+        self.dLabel = Label(query_win, text="Date").grid(row=0,column=0,padx=30,pady=15)
+        self.mLabel = Label(query_win, text="Month").grid(row=0,column=1,padx=30,pady=15)
+        self.yLabel = Label(query_win, text="Year").grid(row=0,column=2,padx=30,pady=15)
 
-# All functions except main moved to backend
+        # Entry Boxes
+        self.d = Entry(query_win, width=9).grid(row=1,column=0)
+        self.m = Entry(query_win, width=9).grid(row=1,column=1)
+        self.y = Entry(query_win, width=9).grid(row=1,column=2)
+
+        # Buttons
+        self.confirm = Button(query_win, text="Enter").grid(row=2,column=1,padx=30,pady=15)
+
 
 
 def main():
