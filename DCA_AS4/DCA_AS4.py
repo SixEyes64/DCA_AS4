@@ -29,7 +29,7 @@ class AppFrame(Frame):
         self.print_all = Button(self, text="Print all", command=bk().print_all_records)
         self.pos_growth = Button(self, text="Positive Growth", command=bk().print_positive_growth)
         self.query_date = Button(self, text="Filter by date", command=self.QueryWindow)
-        self.date_range = Button(self, text="Filter by range")
+        self.date_range = Button(self, text="Filter by range", command=self.ByRangeWindow)
 
         # Place buttons
         self.print_all.grid(row=0,column=0, padx=10, pady=10)
@@ -55,6 +55,32 @@ class AppFrame(Frame):
 
         # Buttons
         self.confirm = Button(query_win, text="Enter").grid(row=2,column=1,padx=30,pady=15)
+
+    def ByRangeWindow(self):
+        byrange_win = Toplevel(self)
+        byrange_win.title("Enter date by range")
+        byrange_win.geometry("400x200")
+
+        # Labels
+        self.field1 = Label(byrange_win, text="1").grid(row=1,column=0,padx=30,pady=15)
+        self.field2 = Label(byrange_win, text="2").grid(row=2,column=0,padx=30,pady=15)
+
+        self.dLabel = Label(byrange_win, text="Date").grid(row=0,column=1,padx=30,pady=15)
+        self.mLabel = Label(byrange_win, text="Month").grid(row=0,column=2,padx=40,pady=15)
+        self.yLabel = Label(byrange_win, text="Year").grid(row=0,column=3,padx=30,pady=15)
+
+
+        # Entry Boxes
+        self.d1 = Entry(byrange_win, width=9).grid(row=1,column=1,pady=15)
+        self.m1 = Entry(byrange_win, width=9).grid(row=1,column=2,pady=15)
+        self.y1 = Entry(byrange_win, width=9).grid(row=1,column=3,pady=15)
+
+        self.d2 = Entry(byrange_win, width=9).grid(row=2,column=1)
+        self.m2 = Entry(byrange_win, width=9).grid(row=2,column=2)
+        self.y2 = Entry(byrange_win, width=9).grid(row=2,column=3)    
+
+        # Buttons
+        self.confirm = Button(byrange_win, text="Enter").grid(row=3,column=2,padx=30,pady=15)
 
 
 
