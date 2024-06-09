@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 from backend import backend as bk
 
 '''
@@ -59,13 +60,15 @@ class AppFrame(Frame):
         self.y = Entry(query_win, width=9, textvariable=self.q3).grid(row=1,column=2)
 
         # Buttons
-        self.confirm = Button(query_win, text="Enter", command=self.get).grid(row=2,column=1,padx=30,pady=15)
+        self.confirm = Button(query_win, text="Enter", command=self.get1).grid(row=2,column=1,padx=30,pady=15)
 
-    def get(self):
-        bk().query_record_by_date(self.q1.get(),self.q2.get(),self.q3.get())
-        #self.q1.get()
-        #self.q2.get()
-        #self.q3.get()
+    def get1(self):
+        '''Gets values for query_record_by_date'''
+        try:
+            # Get values
+            bk().query_record_by_date(self.q1.get(),self.q2.get(),self.q3.get())
+        except Exception as QueryError:
+            messagebox.showerror("Error","Invalid date")
 
 
     def ByRangeWindow(self):
@@ -92,6 +95,9 @@ class AppFrame(Frame):
 
         # Buttons
         self.confirm = Button(byrange_win, text="Enter").grid(row=3,column=2,padx=30,pady=15)
+
+    def get2(self):
+        '''Gets two dates and searches for companies in between those dates'''
 
 
 
