@@ -48,13 +48,25 @@ class AppFrame(Frame):
         self.mLabel = Label(query_win, text="Month").grid(row=0,column=1,padx=40,pady=15)
         self.yLabel = Label(query_win, text="Year").grid(row=0,column=2,padx=30,pady=15)
 
+        # Get values
+        self.q1 = IntVar(query_win)
+        self.q2 = IntVar(query_win)
+        self.q3 = IntVar(query_win)
+
         # Entry Boxes
-        self.d = Entry(query_win, width=9).grid(row=1,column=0)
-        self.m = Entry(query_win, width=9).grid(row=1,column=1)
-        self.y = Entry(query_win, width=9).grid(row=1,column=2)
+        self.d = Entry(query_win, width=9, textvariable=self.q1).grid(row=1,column=0)
+        self.m = Entry(query_win, width=9, textvariable=self.q2).grid(row=1,column=1)
+        self.y = Entry(query_win, width=9, textvariable=self.q3).grid(row=1,column=2)
 
         # Buttons
-        self.confirm = Button(query_win, text="Enter").grid(row=2,column=1,padx=30,pady=15)
+        self.confirm = Button(query_win, text="Enter", command=self.get).grid(row=2,column=1,padx=30,pady=15)
+
+    def get(self):
+        bk().query_record_by_date(self.q1.get(),self.q2.get(),self.q3.get())
+        #self.q1.get()
+        #self.q2.get()
+        #self.q3.get()
+
 
     def ByRangeWindow(self):
         byrange_win = Toplevel(self)
@@ -68,7 +80,6 @@ class AppFrame(Frame):
         self.dLabel = Label(byrange_win, text="Date").grid(row=0,column=1,padx=30,pady=15)
         self.mLabel = Label(byrange_win, text="Month").grid(row=0,column=2,padx=40,pady=15)
         self.yLabel = Label(byrange_win, text="Year").grid(row=0,column=3,padx=30,pady=15)
-
 
         # Entry Boxes
         self.d1 = Entry(byrange_win, width=9).grid(row=1,column=1,pady=15)

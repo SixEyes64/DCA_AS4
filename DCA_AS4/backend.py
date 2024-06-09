@@ -48,15 +48,15 @@ class backend():
 
 
 
-    def query_record_by_date(self):
+    def query_record_by_date(self, day, month, year):
         '''Displays a query sorting records by date'''
         # Enter the day, month and year
-        d = int(input("Enter day: "))
-        m = int(input("Enter month: "))
-        y = int(input("Enter year: "))
+        self.day = day
+        self.month = month
+        self.year = year
 
         # Get date data and format it
-        date = datetime(y, m, d)
+        date = datetime(self.year, self.month, self.day)
         queryDate = date.strftime('%d/%m/%Y')
 
         # Use cursor to select from table   
