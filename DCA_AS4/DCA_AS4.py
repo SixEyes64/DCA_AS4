@@ -84,6 +84,10 @@ class AppFrame(Frame):
         self.dLabel = Label(byrange_win, text="Date").grid(row=0,column=1,padx=30,pady=15)
         self.mLabel = Label(byrange_win, text="Month").grid(row=0,column=2,padx=40,pady=15)
         self.yLabel = Label(byrange_win, text="Year").grid(row=0,column=3,padx=30,pady=15)
+        
+        # Get Values
+        
+
 
         # Entry Boxes
         self.d1 = Entry(byrange_win, width=9).grid(row=1,column=1,pady=15)
@@ -92,7 +96,8 @@ class AppFrame(Frame):
 
         self.d2 = Entry(byrange_win, width=9).grid(row=2,column=1)
         self.m2 = Entry(byrange_win, width=9).grid(row=2,column=2)
-        self.y2 = Entry(byrange_win, width=9).grid(row=2,column=3)    
+        self.y2 = Entry(byrange_win, width=9).grid(row=2,column=3) 
+        
 
         # Buttons
         self.confirm = Button(byrange_win, text="Enter").grid(row=3,column=2,padx=30,pady=15)
