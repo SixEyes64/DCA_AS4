@@ -12,6 +12,7 @@ class App(Tk):
     def __init__(self):
         super().__init__()
 
+        # Window details
         self.title("Company Data")
         self.geometry("720x580")
 
@@ -105,7 +106,6 @@ def main():
     '''Runs all the main functions for the program to function'''
     app = App()
     app.mainloop()
-    # b.query_record_by_date()
     # b.count_companies_between_dates()
 
 main()
