@@ -121,7 +121,6 @@ def main():
     '''Runs all the main functions for the program to function'''
     app = App()
     app.mainloop()
-    # b.count_companies_between_dates()
 
 main()
 
