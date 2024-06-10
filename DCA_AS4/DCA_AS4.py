@@ -86,25 +86,31 @@ class AppFrame(Frame):
         self.yLabel = Label(byrange_win, text="Year").grid(row=0,column=3,padx=30,pady=15)
         
         # Get Values
+        self.d1q1 = IntVar(byrange_win)
+        self.d1q2 = IntVar(byrange_win)
+        self.d1q3 = IntVar(byrange_win)
+        
+        self.d2q1 = IntVar(byrange_win)
+        self.d2q2 = IntVar(byrange_win)
+        self.d2q3 = IntVar(byrange_win)
         
 
-
         # Entry Boxes
-        self.d1 = Entry(byrange_win, width=9).grid(row=1,column=1,pady=15)
-        self.m1 = Entry(byrange_win, width=9).grid(row=1,column=2,pady=15)
-        self.y1 = Entry(byrange_win, width=9).grid(row=1,column=3,pady=15)
+        self.d1 = Entry(byrange_win, width=9, textvariable=self.d1q1).grid(row=1,column=1,pady=15)
+        self.m1 = Entry(byrange_win, width=9, textvariable=self.d1q2).grid(row=1,column=2,pady=15)
+        self.y1 = Entry(byrange_win, width=9, textvariable=self.d1q3).grid(row=1,column=3,pady=15)
 
-        self.d2 = Entry(byrange_win, width=9).grid(row=2,column=1)
-        self.m2 = Entry(byrange_win, width=9).grid(row=2,column=2)
-        self.y2 = Entry(byrange_win, width=9).grid(row=2,column=3) 
+        self.d2 = Entry(byrange_win, width=9, textvariable=self.d2q1).grid(row=2,column=1)
+        self.m2 = Entry(byrange_win, width=9, textvariable=self.d2q2).grid(row=2,column=2)
+        self.y2 = Entry(byrange_win, width=9, textvariable=self.d2q3).grid(row=2,column=3) 
         
 
         # Buttons
-        self.confirm = Button(byrange_win, text="Enter").grid(row=3,column=2,padx=30,pady=15)
+        self.confirm = Button(byrange_win, text="Enter", command=self.get2).grid(row=3,column=2,padx=30,pady=15)
 
     def get2(self):
         '''Gets two dates and searches for companies in between those dates'''
-
+        bk().count_companies_between_dates(self.d1q1.get(),self.d1q2.get(),self.d1q3.get(),self.d2q1.get(),self.d2q2.get(),self.d2q3.get())
 
 
 def main():

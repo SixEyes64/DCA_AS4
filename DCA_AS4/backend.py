@@ -77,20 +77,21 @@ class backend():
         print(date_str)
 
 
-    def count_companies_between_dates(self, day, month, year):
+    def count_companies_between_dates(self, day1, month1, year1, day2, month2, year2):
         '''Asks user for start and end date, and then lists companies 
         between those two dates'''
         date_list = [] # Date list gathers the two dates
 
         # Get date data and format it
-        date1 = datetime(year, month, day)
+        date1 = datetime(year1, month1, day1)
         queryDate1 = date1.strftime('%d/%m/%Y')
         
-        date2 = datetime(year, month, day)
+        date2 = datetime(year2, month2, day2)
         queryDate2 = date2.strftime('%d/%m/%Y')
 
         # Add to date_list
-        date_list.append(queryDate1,queryDate2)
+        date_list.append(queryDate1)
+        date_list.append(queryDate2)
         print('\n',date_list)
 
         # Select BETWEEN dates
