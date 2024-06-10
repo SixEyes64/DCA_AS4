@@ -69,7 +69,7 @@ class AppFrame(Frame):
             # Get values
             bk().query_record_by_date(self.q1.get(),self.q2.get(),self.q3.get())
         except Exception as QueryError:
-            messagebox.showerror("Error","Invalid date")
+            messagebox.showerror("Error", "Invalid date. Check the order of your date")
 
 
     def ByRangeWindow(self):
@@ -110,7 +110,11 @@ class AppFrame(Frame):
 
     def get2(self):
         '''Gets two dates and searches for companies in between those dates'''
-        bk().count_companies_between_dates(self.d1q1.get(),self.d1q2.get(),self.d1q3.get(),self.d2q1.get(),self.d2q2.get(),self.d2q3.get())
+        try:
+            bk().count_companies_between_dates(self.d1q1.get(),self.d1q2.get(),self.d1q3.get(),self.d2q1.get(),self.d2q2.get(),self.d2q3.get())
+        except Exception as DateError:
+            messagebox.showerror("Error", "Invalid date. Check the order of your date")
+            
 
 
 def main():
