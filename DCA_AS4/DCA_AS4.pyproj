@@ -22,6 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="backend.py" />
     <Compile Include="DCA_AS4.py" />
   </ItemGroup>
   <ItemGroup>
