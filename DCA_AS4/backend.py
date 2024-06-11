@@ -94,12 +94,16 @@ class backend():
         date_list.append(queryDate1)
         date_list.append(queryDate2)
 
-        # Select BETWEEN dates
-        self.cursor.execute('SELECT * FROM Company_Data WHERE company_found_date BETWEEN ? AND ?',(date_list[0],date_list[1]))
+        if date2.year < date1.year:
+            print("The years entered are invalid. Make sure Year 2 is not less than Year 1")
+
+        else:
+            # Select BETWEEN dates
+            self.cursor.execute('SELECT * FROM Company_Data WHERE company_found_date BETWEEN ? AND ?',(date_list[0],date_list[1]))
 
 
-        for row in self.cursor.fetchall():
-            no_of_dates.append(row)
+            for row in self.cursor.fetchall():
+                no_of_dates.append(row)
 
-        # Print final amount of dates
-        print("The number of companies between {y1} and {y2} found is {no}".format(y1=date1.year, y2=date2.year, no=len(no_of_dates)))
+            # Print final amount of dates
+            print("The number of companies between {y1} and {y2} found is {no}".format(y1=date1.year, y2=date2.year, no=len(no_of_dates)))
